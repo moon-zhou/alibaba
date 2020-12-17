@@ -10,7 +10,7 @@ nacos脑图：
 
 ### 使用方式
 1. 从 Github 上下载源码方式
-    ```java
+    ```shell script
     git clone https://github.com/alibaba/nacos.git
     cd nacos/
     mvn -Prelease-nacos -Dmaven.test.skip=true clean install -U  
@@ -22,7 +22,7 @@ nacos脑图：
 1. 下载编译后压缩包方式
 
     您可以从 [最新稳定版本](https://github.com/alibaba/nacos/releases) 下载 nacos-server-$version.zip 包。
-    ```java
+    ```shell script
      unzip nacos-server-$version.zip 或者 tar -xvf nacos-server-$version.tar.gz
      cd nacos/bin
     ```
@@ -43,7 +43,7 @@ nacos脑图：
 
 1. 启动过程注意点
     1. 环境准备要严格，因为开发任务使用到的工具需要32位jdk，我修改了环境变量，所以导致启动后无法访问管理系统的情况。
-        ```java
+        ```
         Nacos 依赖 Java 环境来运行。如果您是从代码开始构建并运行Nacos，还需要为此配置 Maven环境，请确保是在以下版本环境中安装使用:
         
         64 bit OS，支持 Linux/Unix/Mac/Windows，推荐选用 Linux/Unix/Mac。
@@ -51,11 +51,23 @@ nacos脑图：
         Maven 3.2.x+；下载 & 配置。
         ```
     1. 启动过程比较慢，出现以下信息，表示完全启动成功，访问控制台的地址：http://192.168.1.6:8848/nacos/index.html
-        ```java
+        ```
         2020-12-13 22:04:12,368 INFO Nacos started successfully in stand alone mode. use embedded storage
+        ```
+    1. jdk环境变量设置问题
+        ```
+        因为windows下，JDK8之后默认创建了一个相关命令的快捷方式文件夹：C:\Program Files (x86)\Common Files\Oracle\Java\javapath
+        并且将该目录给设置了在了环境变量最前面，如果多JDK安装时，则需要注意了，该文件夹和环境变量里的配置都可以删除。
+        直接使用最原始的%JAVA_HOME%配置，因为很多依赖JDK的程序都会默认找这个环境变量，最稳妥的环境变量设置方式。
         ```
 
 ### 配置中心
+
+### 目录说明
+1. `img文件夹`：存储markdown文件所使用的到的图片
+2. `script文件夹`：存储使用到的一些脚本，方便开发过程使用
+    1. `start nacos.bat`：启动nacos服务需要进入nacos的安装目录，执行对应的脚本，直接将这个过程脚本化，放在桌面，减少操作路径。可自行根据需要修改nacos服务安装目录。
+    1. `set jdk 1.8.bat`:windows下切换jdk脚本，因为同时使用到不同的jdk依赖，修改操作路径脚本化。
 
 ### 参考
 1. [官方网址](http://nacos.io)
