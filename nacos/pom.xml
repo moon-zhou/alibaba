@@ -11,5 +11,25 @@
 
     <artifactId>nacos</artifactId>
 
+    <properties>
+        <nacos-client.latest.version>2.0.0-ALPHA.1</nacos-client.latest.version>
+        <logback-classic.latest.version>1.3.0-alpha5</logback-classic.latest.version>
+    </properties>
+
+    <dependencies>
+        <!-- 客户端访问配置服务 -->
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>${nacos-client.latest.version}</version>
+        </dependency>
+
+        <!--  有日志实现，下面可去掉  -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.latest.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
