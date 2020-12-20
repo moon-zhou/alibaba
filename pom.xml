@@ -13,6 +13,22 @@
         <module>nacos</module>
     </modules>
 
+    <properties>
+        <commons-lang3.version>3.10</commons-lang3.version>
+    </properties>
+
+    <dependencyManagement>
+
+        <!-- 依赖管理，工具类-->
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
