@@ -152,7 +152,18 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
     1. 简单客户单使用示例，读取配置内容。`org.moonzhou.alibaba.learning.nacos.NacosClient001`
     1. 读取配置内容，同时添加监听服务端修改。`org.moonzhou.alibaba.learning.nacos.NacosClient002`
     1. 添加监听读取配置内容，同时监听也可以被移除，移除后无法监听配置的修改。`org.moonzhou.alibaba.learning.nacos.NacosClient003`
-
+    1. 发布配置：通过程序自动发布 Nacos 配置，以便通过自动化手段降低运维成本。
+        ```
+        # 创建和修改配置时使用的同一个发布接口，当配置不存在时会创建配置，当配置已存在时会更新配置。
+        # 注意指定类型在后台管理界面上，没有显示出指定的类型
+        # 读取配置超时或网络异常，抛出 NacosException 异常。
+        org.moonzhou.alibaba.learning.nacos.NacosClient004
+        ```
+    1. 删除配置：通过程序自动删除 Nacos 配置，以便通过自动化手段降低运维成本。
+        ```
+        # 当配置已存在时会删除该配置，当配置不存在时会直接返回成功消息。
+        org.moonzhou.alibaba.learning.nacos.NacosClient005
+        ```
 
 ### 目录说明
 1. `img文件夹`：存储markdown文件所使用的到的图片
