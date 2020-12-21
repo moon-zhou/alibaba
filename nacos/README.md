@@ -164,6 +164,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
         # 当配置已存在时会删除该配置，当配置不存在时会直接返回成功消息。
         org.moonzhou.alibaba.learning.nacos.NacosClient005
         ```
+    1. 组合示例：`org.moonzhou.alibaba.learning.nacos.NacosExample`
 
 ### 目录说明
 1. `img文件夹`：存储markdown文件所使用的到的图片
