@@ -132,6 +132,22 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 #### 学习关键点
 1. 必要软件下载，配置环境搭建
 1. 使用配置功能，了解核心概念
+1. 切换数据源，默认使用derby存储数据，修改为使用单独部署的Mysql存储数据
+    1. 创建数据库
+        ```sql
+        create database if not exists nacos default charset utf8 collate utf8_general_ci;
+        ```
+    1. 建表：执行自带的脚本，${nacos_install_dir}/conf/nacos-mysql.sql
+    1. 运行时发现有版本要求，1.0.0RC3还是只能使用Mysql5，从源码里的mysql-connector-java依赖版本可以看出，Mysql8启动直接报错。
+    1. 下载最新的开发分支代码，2.0.0，发现mysql-connector-java版本为8+，直接使用功能mvn打出使用包，修改相关配置，启动即可。需要注意的是时区不能写错`serverTimezone=GMT%2B8`，否则也连接不上，和不支持Mysql8的现象一样，易被误导，不容易找到原因。
+        ```sql
+        # 切换独立Mysql数据库存储配置信息
+        spring.datasource.platform=mysql
+        db.num=1
+        db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=GMT%2B8
+        db.user=root
+        db.password=root
+        ```
 1. 客户端代码学习
     1. 简单客户单使用示例，读取配置内容。`org.moonzhou.alibaba.learning.nacos.NacosClient001`
     1. 读取配置内容，同时添加监听服务端修改。`org.moonzhou.alibaba.learning.nacos.NacosClient002`
@@ -144,6 +160,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 2. `script文件夹`：存储使用到的一些脚本，方便开发过程使用
     1. `start nacos.bat`：启动nacos服务需要进入nacos的安装目录，执行对应的脚本，直接将这个过程脚本化，放在桌面，减少操作路径。可自行根据需要修改nacos服务安装目录。
     1. `set jdk 1.8.bat`:windows下切换jdk脚本，因为同时使用到不同的jdk依赖，修改操作路径脚本化。
+    1. `mysql.bat`：windows下启动mysql服务以及对应的客户端连接工具批处理命令，因为为了提高windows运行性能，mysql服务通常设置为手动启动，而且手动开启时需要到服务里查找，步骤较多。因此通过脚本简化操作步骤。
 1. src为正常nacos示例的java代码，使用功能maven构建。
 
 ### 参考
