@@ -1,0 +1,19 @@
+server:
+  port: 8070
+
+spring:
+  application:
+    name: moon-provider # 设置项目名称
+  cloud:
+    nacos:
+      config:
+        server-addr: 10.19.38.5:8848
+      discovery:
+        server-addr: 10.19.38.5:8848 # Nacos服务接口(不能加http前缀)，直接访问localhost:8848/nacos可以进入管理页面
+        file-extension: yaml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
