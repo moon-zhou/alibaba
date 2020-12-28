@@ -196,11 +196,20 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 1. src为正常nacos示例的java代码，使用功能maven构建。
 
 ### 注册中心
-####
+#### 说明
 以Java nacos client v1.0.1 为例子，服务注册的策略的是每5秒向nacos server发送一次心跳，心跳带上了服务名，服务ip，服务端口等信息。同时 nacos server也会向client 主动发起健康检查，支持tcp/http检查。如果15秒内无心跳且健康检查失败则认为实例不健康，如果30秒内健康检查失败则剔除实例。
 
 原理示意图：
 ![nacos registry](./img/nacosRegistrySketchMap.png)
+
+#### 实例操作步骤
+1. 启动nacos服务
+2. 搭建服务提供方，将服务注册到nacos服务里。
+    * 示例
+    * 注意点：springboot-springcloud-springcloud alibaba的版本需要按照规则进行
+        ![nacos springboot springcloud version](./img/nacosComponentVerionDependency.png)
+3. 搭建服务使用方
+
 
 ### 参考
 1. [官方网址](http://nacos.io)
@@ -217,7 +226,8 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
     1. 发布和删除配置服务（done）
 2. nacos源码部分依赖无法通过maven下载，初步分析和maven镜像有关，后续再分析解决。
     > 已解决，maven配置问题，因为settings.xml配置过多，未一一查找，直接使用公司maven仓库可以下载全量用到的jar包。
-1. 服务集群配置
+1. 服务集群配置（伪集群）
+1. 服务注册
 
 ### 示例代码
 [My Hub](https://github.com/moon-zhou/alibaba/tree/main/nacos)

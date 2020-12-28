@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: moon_provider # 设置项目名称
+    name: moon-provider # 设置项目名称
   cloud:
     nacos:
       discovery:
