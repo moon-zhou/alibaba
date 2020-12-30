@@ -26,6 +26,7 @@
 
     <modules>
         <module>nacos-spring-cloud-discovery</module>
+        <module>nacos-spring-cloud-config</module>
     </modules>
 
     <dependencyManagement>
