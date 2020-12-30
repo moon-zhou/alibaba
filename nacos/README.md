@@ -186,14 +186,8 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
         ```
     1. 组合示例：`org.moonzhou.alibaba.learning.nacos.NacosExample`
 
-### 目录说明
-1. `img文件夹`：存储markdown文件所使用的到的图片
-1. `nacosConf`：nacos上配置的示例，配合代码使用。直接导入后，可直接运行各个示例代码。
-2. `script文件夹`：存储使用到的一些脚本，方便开发过程使用
-    1. `start nacos.bat`：启动nacos服务需要进入nacos的安装目录，执行对应的脚本，直接将这个过程脚本化，放在桌面，减少操作路径。可自行根据需要修改nacos服务安装目录。
-    1. `set jdk 1.8.bat`:windows下切换jdk脚本，因为同时使用到不同的jdk依赖，修改操作路径脚本化。
-    1. `mysql.bat`：windows下启动mysql服务以及对应的客户端连接工具批处理命令，因为为了提高windows运行性能，mysql服务通常设置为手动启动，而且手动开启时需要到服务里查找，步骤较多。因此通过脚本简化操作步骤。
-1. src为正常nacos示例的java代码，使用功能maven构建。
+#### spring cloud 示例
+
 
 ### 注册中心
 #### 说明
@@ -204,12 +198,30 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 
 #### 实例操作步骤
 1. 启动nacos服务
-2. 搭建服务提供方，将服务注册到nacos服务里。
-    * 示例
-    * 注意点：springboot-springcloud-springcloud alibaba的版本需要按照规则进行
+2. 搭建服务提供方，将服务注册到nacos服务里
+    * 示例:
+        * spring cloud: `nacos-spring-cloud/nacos-spring-cloud-discovery/nacos-spring-cloud-provider`
+    * 注意点：springboot-springcloud-springcloud alibaba的版本需要按照规则引入，否则服务无法注册
         ![nacos springboot springcloud version](./img/nacosComponentVerionDependency.png)
-3. 搭建服务使用方
+3. 搭建服务消费方，将消费方注册到nacos服务里
+    * 示例：
+        * spring cloud: `nacos-spring-cloud/nacos-spring-cloud-discovery/nacos-spring-cloud-consumer`
+4. 均在nacos服务配置中心注册成功后，可以直接调用消费方对外提供的http接口，消费方通过注册服务直接调用到服务提供方。   
+    * 注册成功
+        ![nacos discovery demo](./img/nacosDiscoveryDemo.png)
+    * 调用示例
+        ![nacos consumer code demo](./img/nacosConsumerCodeDemo.png)
+    * 调用成功
+        ![nacos consumer demo](./img/nacosConsumerDemo.png)
 
+### 目录说明
+1. `img文件夹`：存储markdown文件所使用的到的图片
+1. `nacosConf`：nacos上配置的示例，配合代码使用。直接导入后，可直接运行各个示例代码。
+2. `script文件夹`：存储使用到的一些脚本，方便开发过程使用
+    1. `start nacos.bat`：启动nacos服务需要进入nacos的安装目录，执行对应的脚本，直接将这个过程脚本化，放在桌面，减少操作路径。可自行根据需要修改nacos服务安装目录。
+    1. `set jdk 1.8.bat`:windows下切换jdk脚本，因为同时使用到不同的jdk依赖，修改操作路径脚本化。
+    1. `mysql.bat`：windows下启动mysql服务以及对应的客户端连接工具批处理命令，因为为了提高windows运行性能，mysql服务通常设置为手动启动，而且手动开启时需要到服务里查找，步骤较多。因此通过脚本简化操作步骤。
+1. src为正常nacos示例的java代码，使用功能maven构建。
 
 ### 参考
 1. [官方网址](http://nacos.io)
