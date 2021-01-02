@@ -244,7 +244,24 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
     ```
     ![nacos config](./img/nacosConfigServer1.png)
     ![nacos config](./img/nacosConfigServer2.png)
-
+1. 其他配置：[官网](https://spring-cloud-alibaba-group.github.io/github-pages/hoxton/en-us/index.html#_support_custom_namespaces)
+    * Support Custom Namespaces: `spring.cloud.nacos.config.namespace`
+    * Support Custom Groups: `spring.cloud.nacos.config.group`
+    * Support Custom Data Id
+        ```properties
+        # config external configuration
+        # 1. Data Id is in the default group of DEFAULT_GROUP, and dynamic refresh of configurations is not supported.
+        spring.cloud.nacos.config.ext-config[0].data-id=ext-config-common01.properties
+        
+        # 2. Data Id is not in the default group, and dynamic refresh of configurations is not supported.
+        spring.cloud.nacos.config.ext-config[1].data-id=ext-config-common02.properties
+        spring.cloud.nacos.config.ext-config[1].group=GLOBALE_GROUP
+        
+        # 3. Data Id is not in the default group and dynamic referesh of configurations is supported.
+        spring.cloud.nacos.config.ext-config[2].data-id=ext-config-common03.properties
+        spring.cloud.nacos.config.ext-config[2].group=REFRESH_GROUP
+        spring.cloud.nacos.config.ext-config[2].refresh=true
+        ```
 
 ### 注册中心
 #### 说明
