@@ -187,6 +187,63 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
     1. 组合示例：`org.moonzhou.alibaba.learning.nacos.NacosExample`
 
 #### spring cloud 示例
+1. 添加依赖：注意点仍然是版本对应，[官方版本说明wiki](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
+    ```xml
+    <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+    </dependency>
+    ```
+1. 配置文件bootstrap.yml，配置 Nacos server 的地址和应用名
+    ```yaml
+    server:
+      port: 8090
+    
+    spring:
+      application:
+        name: moon-nacos-spring-cloud-config-demo
+      cloud:
+        nacos:
+          config:
+            prefix: moon-nacos-config
+            server-addr: 10.19.38.5:8848 # 配置中心地址
+            file-extension: yaml
+    ```
+    需要注意的是，dataId的规则格式：`${prefix}-${spring.profiles.active}.${file-extension}`
+    * prefix 默认为 spring.application.name 的值，也可以通过配置项 spring.cloud.nacos.config.prefix来配置。
+    * spring.profiles.active 即为当前环境对应的 profile，详情可以参考 Spring Boot文档。 注意：当 spring.profiles.active 为空时，对应的连接符 - 也将不存在，dataId 的拼接格式变成 ${prefix}.${file-extension}
+    * file-exetension 为配置内容的数据格式，可以通过配置项 spring.cloud.nacos.config.file-extension 来配置。目前只支持 properties 和 yaml 类型。
+
+1. 通过 Spring Cloud 原生注解 @RefreshScope 实现配置自动更新
+    ```java
+    @RestController
+    @RequestMapping("/config")
+    @RefreshScope
+    public class ConfigController {
+    
+        /**
+         * 对应nacos server里的配置内容，yml格式的
+         * dataId： <code>${prefix}-${spring.profiles.active}.${file-extension}</code>
+         *     prefix 默认为 spring.application.name 的值，也可以通过配置项 spring.cloud.nacos.config.prefix来配置。
+         * group: DEFAULT_GROUP
+         *
+         * RefreshScope自动刷新，监听服务端的配置修改
+         */
+        @Value("${useLocalCache:false}")
+        private boolean useLocalCache;
+    
+        /**
+         * http://localhost:8090/config/get
+         * http://192.168.1.6/:8090/config/get
+         */
+        @RequestMapping("/get")
+        public boolean get() {
+            return useLocalCache;
+        }
+    }
+    ```
+    ![nacos config](./img/nacosConfigServer1.png)
+    ![nacos config](./img/nacosConfigServer2.png)
 
 
 ### 注册中心
@@ -201,7 +258,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 2. 搭建服务提供方，将服务注册到nacos服务里
     * 示例:
         * spring cloud: `nacos-spring-cloud/nacos-spring-cloud-discovery/nacos-spring-cloud-provider`
-    * 注意点：springboot-springcloud-springcloud alibaba的版本需要按照规则引入，否则服务无法注册
+    * 注意点：springboot-springcloud-springcloud alibaba的版本需要按照规则引入，否则服务无法注册。[官方版本说明wiki](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
         ![nacos springboot springcloud version](./img/nacosComponentVerionDependency.png)
 3. 搭建服务消费方，将消费方注册到nacos服务里
     * 示例：
