@@ -15,6 +15,8 @@
         <module>nacos</module>
         <!-- nacos在spring cloud里的使用示例 -->
         <module>nacos-spring-cloud</module>
+        <!-- nacos在spring boot里的使用示例 -->
+        <module>nacos-spring-boot</module>
     </modules>
 
     <properties>
