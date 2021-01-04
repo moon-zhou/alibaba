@@ -332,4 +332,6 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
     1. spring boot 示例（done）
 
 ### 示例代码
-[My Hub](https://github.com/moon-zhou/alibaba/tree/main/nacos)
+1. [nacos Java示例](https://github.com/moon-zhou/alibaba/tree/main/nacos)
+1. [nacos spring boot 示例](https://github.com/moon-zhou/alibaba/tree/main/nacos-spring-boot)
+1. [nacos spring cloud 示例](https://github.com/moon-zhou/alibaba/tree/main/nacos-spring-cloud)
