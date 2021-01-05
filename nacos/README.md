@@ -273,6 +273,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
     ```
     最佳实践类：org.moonzhou.alibaba.learning.nacos.spring.boot.config.config.NacosServerUserConfig
     ```
+1. 服务注册和发现单独再springboot里使用不够优雅，还是需要结合springcloud的大生态进行集成。
 
 ### 注册中心
 #### 说明
@@ -315,6 +316,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 1. [什么是Nacos？Nacos注册配置中心介绍](https://www.jianshu.com/p/39ade28c150d)
 1. [Nacos 0.9.0 发布，稳定的快速迭代](https://nacos.io/en-us/blog/nacos0.9.0.html)
 1. [nacos使用demo](https://github.com/nacos-group/nacos-examples.git)
+1. [服务注册和配置中心Nacos](https://www.cnblogs.com/xuweiweiwoaini/p/13858963.html)
 
 ### 问题待解决及计划
 1. 完成配置中心功能。
@@ -326,7 +328,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 1. 服务集群配置（伪集群）
 1. 服务注册
     1. spring cloud示例（done）
-    1. spring boot 示例
+    1. spring boot 示例（done）
 1. 服务配置
     1. spring cloud示例（done）
     1. spring boot 示例（done）
