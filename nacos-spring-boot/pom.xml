@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>nacos-spring-boot-config</module>
+        <module>nacos-spring-boot-discovery</module>
     </modules>
 
     <properties>

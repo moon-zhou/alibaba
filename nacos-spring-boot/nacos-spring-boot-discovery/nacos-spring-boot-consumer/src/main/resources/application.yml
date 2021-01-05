@@ -1,0 +1,11 @@
+server:
+  port: 9030
+
+spring:
+  application:
+    name: moon-consumer-nacos-spring-boot
+
+nacos:
+  discovery:
+    #server-addr: 192.168.1.6:8848
+    server-addr: 10.19.38.5:8848 # 配置中心地址
