@@ -22,7 +22,7 @@ public class DiscoveryController {
     private NamingService namingService;
 
     /**
-     * http://10.19.38.5:9030/discovery/get?serviceName=moon-provider-nacos-spring-boot
+     * http://192.168.85.1:9030/discovery/get?serviceName=moon-provider-nacos-spring-boot
      *
      * @param serviceName
      * @return
@@ -35,7 +35,7 @@ public class DiscoveryController {
     }
 
     /**
-     * http://10.19.38.5:9030/discovery/getService?serviceName=moon-provider-nacos-spring-boot
+     * http://192.168.85.1:9030/discovery/getService?serviceName=moon-provider-nacos-spring-boot
      * @param serviceName
      * @return
      * @throws NacosException

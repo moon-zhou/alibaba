@@ -53,7 +53,7 @@ public class NacosClient003 {
         try {
             // 此地址不一定是127.0.0.1，按实际启动时终端显示的后台访问地址里的为准
             String serverAddr = "http://192.168.1.4:8848";
-//            String serverAddr = "http://10.19.38.5:8848";
+//            String serverAddr = "http://192.168.85.1:8848";
 
             String dataId = "testListener";
             String group = "testGroup";

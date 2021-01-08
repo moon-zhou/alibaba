@@ -8,6 +8,6 @@ spring:
     nacos:
       config:
         prefix: moon-nacos-config
-        #server-addr: 10.19.38.5:8848 # 配置中心地址
+        #server-addr: 192.168.85.1:8848 # 配置中心地址
         server-addr: 192.168.1.6:8848
         file-extension: yaml
