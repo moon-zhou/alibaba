@@ -206,7 +206,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
         nacos:
           config:
             prefix: moon-nacos-config
-            server-addr: 10.19.38.5:8848 # 配置中心地址
+            server-addr: 192.168.85.1:8848 # 配置中心地址
             file-extension: yaml
     ```
     需要注意的是，dataId的规则格式：`${prefix}-${spring.profiles.active}.${file-extension}`
@@ -275,6 +275,52 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
     ```
 1. 服务注册和发现单独再springboot里使用不够优雅，还是需要结合springcloud的大生态进行集成。
 
+#### spring 示例
+1. 单独使用springMVC(详细代码可见最后)
+    1. 使用maven创建webapp
+    1. 引入需要的依赖，此处只需要引入springMVC和nacos，因为是简单的小示例，只涉及web层。
+        ```
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-spring-context</artifactId>
+        </dependency>
+        ```
+    1. 配置简化的web.xml，只配置和springMVC相关的，不使用spring管理上下文，不需要配置`ContextLoaderListener`
+        ```xml
+        <web-app>
+          <display-name>Archetype Created Web Application</display-name>
+        
+          <servlet>
+            <servlet-name>dispatcherServlet</servlet-name>
+            <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+            <load-on-startup>1</load-on-startup>
+          </servlet>
+        
+          <servlet-mapping>
+            <servlet-name>dispatcherServlet</servlet-name>
+            <url-pattern>/</url-pattern>
+          </servlet-mapping>
+        </web-app>
+        ```
+    1. 配置监听：`@EnableNacosConfig`和`@NacosPropertySource`
+        > 需要注意的是需要指明nacos-server上配置文件的文件类型，默认是dataId里带上，如moon-nacos-config.yaml，或者使用单独的配置，readConfigTypeFromDataId=false后，使用ConfigType.YAML来进行配置
+    1. 使用：`@NacosInjected`和`@NacosValue`
+    1. 启动测试，需要使用指定外部web容器，无法像springboot工程直接启动。如果在IDEA里出现编译报错的情况，执行`mvn idea:idea`后再进行下面的操作
+       ![nacos spring config start1](./img/nacosSpringConfigTomcatStart1.png)
+       ![nacos spring config start2](./img/nacosSpringConfigTomcatStart2.png)
+       ![nacos spring config start3](./img/nacosSpringConfigTomcatStart3.png)
+       ![nacos spring config start4](./img/nacosSpringConfigTomcatStart4.png)
+    
 ### 注册中心
 #### 说明
 以Java nacos client v1.0.1 为例子，服务注册的策略的是每5秒向nacos server发送一次心跳，心跳带上了服务名，服务ip，服务端口等信息。同时 nacos server也会向client 主动发起健康检查，支持tcp/http检查。如果15秒内无心跳且健康检查失败则认为实例不健康，如果30秒内健康检查失败则剔除实例。
@@ -327,13 +373,15 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
     > 已解决，maven配置问题，因为settings.xml配置过多，未一一查找，直接使用公司maven仓库可以下载全量用到的jar包。
 1. 服务集群配置（伪集群）
 1. 服务注册
-    1. spring cloud示例（done）
+    1. spring cloud 示例（done）
     1. spring boot 示例（done）
 1. 服务配置
-    1. spring cloud示例（done）
+    1. spring cloud 示例（done）
     1. spring boot 示例（done）
+    1. spring 示例（done）
 
 ### 示例代码
 1. [nacos Java示例](https://github.com/moon-zhou/alibaba/tree/main/nacos)
+1. [nacos sring示例](https://github.com/moon-zhou/alibaba/tree/main/nacos-spring)
 1. [nacos spring boot 示例](https://github.com/moon-zhou/alibaba/tree/main/nacos-spring-boot)
 1. [nacos spring cloud 示例](https://github.com/moon-zhou/alibaba/tree/main/nacos-spring-cloud)
