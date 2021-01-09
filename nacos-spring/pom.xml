@@ -12,7 +12,11 @@
     <artifactId>nacos-spring</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <!-- 配置中心在spring里的简单使用 -->
         <module>nacos-spring-config-simple</module>
+
+        <!-- 配置中心在spring里的封装使用 -->
+        <module>nacos-spring-config-pojo</module>
     </modules>
 
     <properties>

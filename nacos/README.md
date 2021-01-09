@@ -322,6 +322,9 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
        ![nacos spring config start4](./img/nacosSpringConfigTomcatStart4.png)
     1. 注意点
         1. 使用了springMVC而未使用ContextLoaderListener，只定义DispatcherServlet，没有显示配置contextConfigLocation参数的话，Spring会到该默认路径下加载配置文件"WEB-INF/dispatcherServlet-servlet.xml", 如果不存在就报异常。
+        1. 字段映射`@NacosProperty`和字段忽略监听`@NacosIgnore`
+        1. 优秀实践`NacosConfigurationProperties`进行封装
+
 ### 注册中心
 #### 说明
 以Java nacos client v1.0.1 为例子，服务注册的策略的是每5秒向nacos server发送一次心跳，心跳带上了服务名，服务ip，服务端口等信息。同时 nacos server也会向client 主动发起健康检查，支持tcp/http检查。如果15秒内无心跳且健康检查失败则认为实例不健康，如果30秒内健康检查失败则剔除实例。
