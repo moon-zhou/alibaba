@@ -320,7 +320,8 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
        ![nacos spring config start2](./img/nacosSpringConfigTomcatStart2.png)
        ![nacos spring config start3](./img/nacosSpringConfigTomcatStart3.png)
        ![nacos spring config start4](./img/nacosSpringConfigTomcatStart4.png)
-    
+    1. 注意点
+        1. 使用了springMVC而未使用ContextLoaderListener，只定义DispatcherServlet，没有显示配置contextConfigLocation参数的话，Spring会到该默认路径下加载配置文件"WEB-INF/dispatcherServlet-servlet.xml", 如果不存在就报异常。
 ### 注册中心
 #### 说明
 以Java nacos client v1.0.1 为例子，服务注册的策略的是每5秒向nacos server发送一次心跳，心跳带上了服务名，服务ip，服务端口等信息。同时 nacos server也会向client 主动发起健康检查，支持tcp/http检查。如果15秒内无心跳且健康检查失败则认为实例不健康，如果30秒内健康检查失败则剔除实例。
@@ -363,6 +364,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 1. [Nacos 0.9.0 发布，稳定的快速迭代](https://nacos.io/en-us/blog/nacos0.9.0.html)
 1. [nacos使用demo](https://github.com/nacos-group/nacos-examples.git)
 1. [服务注册和配置中心Nacos](https://www.cnblogs.com/xuweiweiwoaini/p/13858963.html)
+1. [Spring contextConfigLocation默认加载文件的位置](https://www.cnblogs.com/stonefeng/p/5746857.html)
 
 ### 问题待解决及计划
 1. 完成配置中心功能。
