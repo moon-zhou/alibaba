@@ -20,6 +20,9 @@
 
         <!-- 配置监听：监听nacos server端的数据变动，从而根据自己需要处理变更的数据，目前我司SCM就是使用的该方式 -->
         <module>nacos-spring-config-listener</module>
+
+        <!-- 配置中心的经典使用案例：组件类配置，此示例为数据源的动态配置 -->
+        <module>nacos-spring-config-datasource</module>
     </modules>
 
     <properties>

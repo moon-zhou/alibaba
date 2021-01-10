@@ -17,6 +17,9 @@ public class AdminServiceImpl implements AdminService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminServiceImpl.class);
 
+    /**
+     * 此版本nacos client，dataId仅仅是dataId，文件类型为json，需要在nacos server配置时注意
+     */
     private static final String ADMIN_DATA_ID = "admin";
 
     private static final String ADMIN_GROUP_ID = "spring-listener";

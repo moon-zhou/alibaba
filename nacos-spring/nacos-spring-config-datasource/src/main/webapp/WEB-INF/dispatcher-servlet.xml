@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven/>
+
+    <context:annotation-config/>
+
+    <context:component-scan base-package="org.moonzhou.alibaba.learning.nacos.spring.config"/>
+
+    <!-- 顺序不可乱，先通过nacos，从nacos-server上拿到数据源配置，后面数据源里的变量才能生效 -->
+    <import resource="nacos.xml"/>
+    <import resource="datasource.xml"/>
+    <import resource="spring-config-mybatis.xml"/>
+</beans>

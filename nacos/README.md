@@ -326,6 +326,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
         1. 优秀实践`NacosConfigurationProperties`进行封装
         1. 使用监听方式，`@NacosConfigListener`，更灵活，监听到nacos server配置变更后，根据自己需要进行一些额外操作。
             > nacos-spring-context在升级过程中，也进行了去fastjson，改使用jackson
+        1. 组件的典型使用等：数据源配置
 
 ### 注册中心
 #### 说明
@@ -379,6 +380,8 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 2. nacos源码部分依赖无法通过maven下载，初步分析和maven镜像有关，后续再分析解决。
     > 已解决，maven配置问题，因为settings.xml配置过多，未一一查找，直接使用公司maven仓库可以下载全量用到的jar包。
 1. 服务集群配置（伪集群）
+1. 不能使用dispatcherServlet-servlet.xml,必须使用dispatcher-servlet（TODO-分析spring启动过程）
+1. 配置中心里提取log配置，实现动态修改日志级别等示例的实现（TODO）
 1. 服务注册
     1. spring cloud 示例（done）
     1. spring boot 示例（done）

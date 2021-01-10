@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:nacos="http://nacos.io/schema/nacos"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://nacos.io/schema/nacos
+       http://nacos.io/schema/nacos.xsd">
+
+    <!-- 手动配置不从dataId读取文件类型，显示定义文件类型 -->
+    <nacos:annotation-driven read-type-from-daraId="false" />
+
+    <nacos:global-properties server-addr="192.168.85.1:8848" />
+
+    <!--
+        Nacos 控制台添加配置：
+        Data ID：
+            datasource # 非datasource.properties，不需要带文件类型
+        Group：
+            DEFAULT_GROUP
+        配置内容示例：
+            datasource.url=jdbc:mysql://localhost:3306/nacos-client?useSSL=false
+            datasource.username=root
+            datasource.password=root
+            datasource.initial-size=10
+            datasource.max-active=20
+    -->
+    <nacos:property-source data-id="datasource" group-id="nacos-example" auto-refreshed="true"
+        type="properties"/>
+</beans>
