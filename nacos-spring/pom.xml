@@ -17,6 +17,9 @@
 
         <!-- 配置中心在spring里的封装使用 -->
         <module>nacos-spring-config-pojo</module>
+
+        <!-- 配置监听：监听nacos server端的数据变动，从而根据自己需要处理变更的数据，目前我司SCM就是使用的该方式 -->
+        <module>nacos-spring-config-listener</module>
     </modules>
 
     <properties>

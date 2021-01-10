@@ -324,6 +324,8 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
         1. 使用了springMVC而未使用ContextLoaderListener，只定义DispatcherServlet，没有显示配置contextConfigLocation参数的话，Spring会到该默认路径下加载配置文件"WEB-INF/dispatcherServlet-servlet.xml", 如果不存在就报异常。
         1. 字段映射`@NacosProperty`和字段忽略监听`@NacosIgnore`
         1. 优秀实践`NacosConfigurationProperties`进行封装
+        1. 使用监听方式，`@NacosConfigListener`，更灵活，监听到nacos server配置变更后，根据自己需要进行一些额外操作。
+            > nacos-spring-context在升级过程中，也进行了去fastjson，改使用jackson
 
 ### 注册中心
 #### 说明

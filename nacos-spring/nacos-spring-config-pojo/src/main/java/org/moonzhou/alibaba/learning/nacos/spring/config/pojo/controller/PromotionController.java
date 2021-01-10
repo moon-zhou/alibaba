@@ -15,6 +15,10 @@ public class PromotionController {
     @Autowired
     private Promotion promotion;
 
+    /**
+     * http://localhost:8080/nacos_spring_config_pojo_war/promotion
+     * @return
+     */
     @RequestMapping(method = GET)
     @ResponseBody
     public Promotion get() {
