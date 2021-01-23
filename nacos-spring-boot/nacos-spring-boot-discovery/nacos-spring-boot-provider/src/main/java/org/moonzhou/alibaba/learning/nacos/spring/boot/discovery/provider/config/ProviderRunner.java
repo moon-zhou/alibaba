@@ -18,7 +18,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 功能描述:<br>
+ * 功能描述: 注册服务<br>
+ *
+ *     实现在应用启动后，去执行相关代码逻辑，且只会执行一次；
  *
  * @author moon-zhou
  * @see [相关类/方法]（可选）
