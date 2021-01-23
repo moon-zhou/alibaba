@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProviderController {
 
     /**
-     * http://192.168.85.1:9020/service/hello?name=moon
+     * http://192.168.85.1:8080/service/hello?name=moon
      * http://localhost:8080/nacos_spring_provider_war/service/hello?name=moon
      * @param name
      * @return
