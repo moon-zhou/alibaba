@@ -23,6 +23,9 @@
 
         <!-- 配置中心的经典使用案例：组件类配置，此示例为数据源的动态配置 -->
         <module>nacos-spring-config-datasource</module>
+
+        <!-- 注册中心在纯spring里的使用 -->
+        <module>nacos-spring-discovery</module>
     </modules>
 
     <properties>
