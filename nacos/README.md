@@ -352,6 +352,10 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
         ![nacos consumer code demo](./img/nacosConsumerCodeDemo.png)
     * 调用成功
         ![nacos consumer demo](./img/nacosConsumerDemo.png)
+1. 如果是使用springboot或者springMVC，需要单独写服务注册的逻辑(详见springboot/spring示例)
+    * springboot通过`CommandLineRunner`
+    * springMVC通过`ApplicationListener`或者`@PostConstruct`
+1. 在cloud技术栈里使用，更加便捷
 
 ### 目录说明
 1. `img文件夹`：存储markdown文件所使用的到的图片
@@ -385,6 +389,7 @@ Group的常用场景是同一个配置类型用于不同应用/系统/组件，�
 1. 服务注册
     1. spring cloud 示例（done）
     1. spring boot 示例（done）
+    1. spring 示例（done）
 1. 服务配置
     1. spring cloud 示例（done）
     1. spring boot 示例（done）
