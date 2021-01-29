@@ -9,7 +9,7 @@
  * <author>      <time>      <version>    <desc>
  * 修改人姓名    修改时间    版本号       描述
  */
-package org.moonzhou.alibaba.learning.nacos;
+package org.moonzhou.alibaba.learning.nacos.config;
 
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
@@ -20,19 +20,16 @@ import com.alibaba.nacos.api.exception.NacosException;
 import java.util.Properties;
 
 /**
- * 功能描述: 发布配置示例<br>
- *     通过代码将配置发布到Nacos服务里，以便通过自动化手段降低运维成本。
- *  
- *     <code>public boolean publishConfig(String dataId, String group, String content) throws NacosException</code>
+ * 功能描述: 删除配置示例<br>
+ *     通过程序自动删除 Nacos 配置，以便通过自动化手段降低运维成本。
  *
- *     <code>public boolean publishConfig(String dataId, String group, String content, String type) throws NacosException</code>
- *     Type: com.alibaba.nacos.api.config.ConfigType @Since 1.4.1
+ *     <code>public boolean removeConfig(String dataId, String group) throws NacosException</code>
  *
  * @author moon-zhou
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
-public class NacosClient004 {
+public class NacosClient005 {
 
     public static void main(String[] args) {
         try {
@@ -47,9 +44,8 @@ public class NacosClient004 {
             properties.put(PropertyKeyConst.SERVER_ADDR, serverAddr);
             ConfigService configService = NacosFactory.createConfigService(properties);
 
-//            boolean isPublishOk = configService.publishConfig(dataId, group, "content");
-            boolean isPublishOk = configService.publishConfig(dataId, group, "content=内容", String.valueOf(ConfigType.PROPERTIES));
-            System.out.println("发布结果：" + isPublishOk);
+            boolean isRemoveOk = configService.removeConfig(dataId, group);
+	        System.out.println("删除结果：" + isRemoveOk);
         } catch (NacosException e) {
 
             // 读取配置超时或网络异常，抛出 NacosException 异常。

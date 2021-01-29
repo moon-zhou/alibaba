@@ -1,4 +1,4 @@
-package org.moonzhou.alibaba.learning.nacos;
+package org.moonzhou.alibaba.learning.nacos.config;
 
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
